@@ -1,0 +1,66 @@
+Given a 32-bit signed integer, reverse digits of an integer.
+
+Example 1:
+
+Input: 123
+Output:  321
+Example 2:
+
+Input: -123
+Output: -321
+-----------------------------------------------------
+
+ class Solution {
+    public int reverse(int x) {
+        
+        String str = Integer.toString(x);
+        String str1 = "";
+        String str2 = "";
+        char[] ch1 = str.toCharArray();
+        int n;
+
+        if (str.charAt(0)=='-'){
+            
+            for(int i=1;i<ch1.length;i++){
+                 str2+= ch1[i];
+            }  
+            
+            char[] ch2 = str2.toCharArray();
+            
+            for(int i = ch2.length-1; i >= 0; i-- ){
+            str1 += ch2[i];
+        }
+            try{
+                 n = Integer.parseInt(String.valueOf(str.charAt(0))+str1);
+            }
+            catch(Exception e){
+                 n = 0;
+            }
+            return n;
+          
+        }
+        
+        else {
+            for(int i = ch1.length-1; i >= 0; i-- ){
+            str1 += ch1[i];
+        }
+         
+            try{
+                 n = Integer.parseInt(str1);
+            }
+            catch(Exception e){
+                 n =0;
+            }
+            return n;
+        }
+    }
+    
+    public static void main(String[] args) {
+        
+        Solution s = new Solution();
+        s.reverse(123);
+        s.reverse(-123);
+        s.reverse(1235468654);
+    }
+}
+
