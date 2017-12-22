@@ -1,0 +1,29 @@
+Determine whether an integer is a palindrome. Do this without extra space.
+
+class Solution {
+    public boolean isPalindrome(int x) {
+        
+        String str = Integer.toString(x);
+        String str1 = "";
+        char[] ch = str.toCharArray();
+        char[] ch1 = new char[ch.length];
+        
+        for(int i=ch.length-1;i>=0;i--){
+            str1+=ch[i];
+        }
+        
+        if(str.equals(str1)){
+            System.out.println(str1+" Is Palindrome");
+            return true;
+        }
+        else
+            return false;
+    }
+    
+     public static void main(String[] args){
+        Solution s = new Solution();
+        s.isPalindrome(1001);
+        s.isPalindrome(0);
+    }
+}
+
