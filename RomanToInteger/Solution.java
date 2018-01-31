@@ -5,9 +5,8 @@ class Solution {
         int result = 0;
         
         for(int i = 0; i <= ch.length-2; i++){
-            //int value = getVal(ch[i]);
-            //System.out.println("Value:"+value);
-            if(getVal(ch[i]) >= getVal(ch[i+1]))
+            if(getVal(ch[i]) >= getVal(ch[i+1]))  /* If current value of symbol is greater than or equal to the value of next symbol, then add this value to the running total.
+                                                     else subtract this value by adding the value of next symbol to the running total. */
                 result += getVal(ch[i]);
             else
                 result -= getVal(ch[i]); 
