@@ -1,0 +1,79 @@
+O(N) time with hashset
+------------------------
+import java.util.*;
+class Node{
+ int data;
+ Node head;
+ Node next;
+ 
+ public Node(int d){
+     data = d;
+ }
+ 
+ 
+ 
+  
+  static void printList(Node head){
+      Node n = head;
+      while(n!=null){
+          System.out.println(n.data + "->");
+          n = n.next;
+      }
+  }
+  
+  static void removeDup(Node head){
+      HashSet<Integer> hs = new HashSet<Integer>();
+      Node n = head;
+      Node prev = null;
+      //hs.add(n.data);
+     while(n.next!=null){
+        if(hs.contains(n.data)){
+            prev.next = n.next;
+            //n.next = n.next.next;
+        }
+        
+        else{
+            hs.add(n.data);
+            prev = n;
+            
+        }
+        n = n.next;
+     }
+    
+  }
+  
+  public static void main(String[] args){
+      Node n1 = new Node(5);
+      n1.next = new Node(10);
+      n1.next.next = new Node(10);
+      n1.next.next.next = new Node(5);
+      n1.next.next.next.next = new Node(8);
+      printList(n1);
+      removeDup(n1);
+      System.out.println("-------------------");
+      printList(n1);
+  }
+  
+}
+
+-----------------------------------------------------------------------------
+O(N^2) time with O(1) space
+---------------------------
+
+ static void removeDup(Node head){
+      //HashSet<Integer> hs = new HashSet<Integer>();
+      Node current = head;
+      while(current.next!=null){
+          Node runner = current;
+          while(runner.next!=null){
+              if(runner.next.data == current.data){
+                  runner.next = runner.next.next;
+              }
+              else{
+                  runner = runner.next;
+              }
+          }
+          current = current.next;
+      }
+    
+  }
