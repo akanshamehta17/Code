@@ -1,0 +1,100 @@
+//Recursion
+
+import java.util.*;
+
+class recursivemultiply{
+    
+    public int multiply(int a, int b){
+        int part1 = 0;
+        int part2 = 0;
+        if(a==0) return 0;
+        if(a==1) return b;
+        
+        int s = a/2;
+        part1 = multiply(s,b);
+        if(a%2==0){
+           
+            part2 = part1;
+        }
+        else{
+             part2 = multiply(a-s,b);
+        }
+
+        return part1 + part2;
+    }
+
+    public static void main(String[] args) {
+        recursivemultiply rm = new recursivemultiply();
+        System.out.println(rm.multiply(3,2));
+    }
+}
+---------------------------------------------------------
+//Dynamic Programming
+
+import java.util.*;
+
+class recursivemultiply{
+    
+    public int multiply(int a, int b){
+        int[] memo = new int[a+1];
+        int part1 = 0;
+        int part2 = 0;
+        if(a==0) return 0;
+        else if(a==1) return b;
+        else if(memo[a] > 0) return memo[a];
+            int s = a/2;
+        //System.out.println(s);
+        part1 = multiply(s,b);
+        if(a%2==0){
+           
+            part2 = part1;
+        }
+        else{
+             part2 = multiply(a-s,b);
+        }
+        
+        memo[a] = part1 + part2;
+        return memo[a];
+    }
+
+    public static void main(String[] args) {
+        recursivemultiply rm = new recursivemultiply();
+        System.out.println(rm.multiply(8,5));
+    }
+}
+-----------------------------------------------------------
+O(log s)
+
+import java.util.*;
+
+class recursivemultiply{
+    
+    public int multiply(int a, int b){
+        int[] memo = new int[a+1];
+        int part1 = 0;
+        int part2 = 0;
+        if(a==0) return 0;
+        else if(a==1) return b;
+        else if(memo[a] > 0) return memo[a];
+            int s = a/2;
+        //System.out.println(s);
+        part1 = multiply(s,b);
+        if(a%2==0){
+           
+            part2 = part1;
+        }
+        else{
+            // part2 = multiply(a-s,b);
+                  //or
+            part2 = part1 + part1 + b;
+        }
+        
+        memo[a] = part1 + part2;
+        return memo[a];
+    }
+
+    public static void main(String[] args) {
+        recursivemultiply rm = new recursivemultiply();
+        System.out.println(rm.multiply(8,5));
+    }
+}
