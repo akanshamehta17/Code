@@ -1,0 +1,30 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        Set<String> set = new HashSet<String>();
+        if(n==0) set.add("");
+        else{
+            
+            List<String> prev = generateParenthesis(n-1);
+            for(String str: prev){
+              for(int i=0;i<str.length();i++){
+                if(str.charAt(i)=='('){
+                    String str1 = insertInside(str,i);
+                    set.add(str1);
+                }
+                
+              }
+                set.add("()"+str);
+            }
+        }
+        
+        
+       List<String> result = new ArrayList<String>(set);
+       return result;
+    }
+    
+    public String insertInside(String str, Integer i){
+        String left = str.substring(0,i+1);
+        String right = str.substring(i+1,str.length());
+        return left+"()"+right;
+    }
+}
