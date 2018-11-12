@@ -1,0 +1,45 @@
+Given a m x n matrix, if an element is 0, set its entire row and column to 0.
+
+Example 1:
+
+Input: 
+[
+  [1,1,1],
+  [1,0,1],
+  [1,1,1]
+]
+Output: 
+[
+  [1,0,1],
+  [0,0,0],
+  [1,0,1]
+]
+
+
+
+class Solution {
+    public int compress(char[] chars) {
+        ArrayList<Character> list = new ArrayList<>();
+        int count = 0;
+        for(int i=0;i<chars.length;i++){
+            count++;
+            if(i+1 >= chars.length || chars[i]!=chars[i+1]){
+                if(count > 1){
+                    list.add(chars[i]);
+                    for(char c: Integer.toString(count).toCharArray()){
+                        System.out.println(c);
+                        list.add(c);
+                    }
+                    count = 0;
+            }
+            else {
+                    list.add(chars[i]);
+                    count = 0;
+                }
+                
+            }
+        }
+        
+        return list.size();
+    }
+}443. String Compression
